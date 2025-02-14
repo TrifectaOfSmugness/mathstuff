@@ -63,8 +63,14 @@ function quadEquat(a, b, c) {
     afact: for (let i = 0; i < afactors.length; i++) {
        cfact: for (let l = 0; l < cfactors.length; l++) {
             demsthefacts = (afactors[i].first*cfactors[l].first) + (cfactors[l].second*afactors[i].second)
-            if (demsthefacts == b) {
+            demsthefacts2 = (afactors[i].first*cfactors[l].second) + (cfactors[l].first*afactors[i].second)
+            if (demsthefacts == b || demsthefacts2 == b) {
+               if (demsthefacts2 == b) {
+                  console.log("("+afactors[i].first+"x+"+cfactors[l].first+")("+afactors[i].second+"x+"+cfactors[l].second+")")
+               }
+               else {               
                 console.log("("+afactors[i].first+"x+"+cfactors[l].second+")("+afactors[i].second+"x+"+cfactors[l].first+")")
+               }
                 break afact;
                 break cfact;
             }
