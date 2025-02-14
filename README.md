@@ -1,0 +1,1 @@
+for now, paste this into console(on pc) or just look up "js compiler" and click on the first result you see. then replace "quadEquat(5, 25, -30)" with your numbers. 1st number is coefficient of x^2, 2nd number is coefficient of x, 3rd number is constant.
