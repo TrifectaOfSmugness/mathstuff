@@ -1,12 +1,14 @@
+function square(number) {
+    return number*number
+}
 function findFactors(n) {
    const factors = [];
-   const factors1 = []
-   const factors2 = []
+   const arrangedFactors = []
    const pairedFactors = []
    function arrange(array) {
        while (array.length > 0) {
-       factors2.push(array.shift())
-       factors2.push(array.pop())
+       arrangedFactors.push(array.shift())
+       arrangedFactors.push(array.pop())
    }
    }
    if (n < 0) {
@@ -16,13 +18,11 @@ function findFactors(n) {
            factors.push(i);
        }
    }
-   for (let i = 0; i < factors.length; i++) {
-       factors1.push(factors[i]*-1)
+   const no = factors.length 
+   for (let i = 0; i < no; i++) {
+       factors.push(factors[i]*-1)
    }
-   for (let i = 0; i < factors.length; i++) {
-       factors1.push(factors[i])
-   }
-   arrange(factors1);
+   arrange(factors);
    }
    else {
    for (let i = 1; i <= n; i++) {
@@ -33,27 +33,29 @@ function findFactors(n) {
    arrange(factors);
    }
 
-if (factors2[factors2.length - 1] == undefined) {
-       factors2.pop()
-       factors2.push(factors2[factors2.length - 1])
+if (arrangedFactors[arrangedFactors.length - 1] == undefined) {
+       arrangedFactors.pop()
+       arrangedFactors.push(arrangedFactors[arrangedFactors.length - 1])
    }
 if (n>0) {
-    const num = factors2.length
+    const num = arrangedFactors.length
     for (let i = 0; i < num; i++) {
-        factors2.push(factors2[i]*(-1))
+        arrangedFactors.push(arrangedFactors[i]*(-1))
     }
 }
-while (factors2.length > 0) {
-    pairedFactors.push({first: factors2[0], second: factors2[1]})
-    factors2.splice(0, 2)
+while (arrangedFactors.length > 0) {
+    pairedFactors.push({first: arrangedFactors[0], second: arrangedFactors[1]})
+    arrangedFactors.splice(0, 2)
 }
     return pairedFactors;
 }
 function quadEquat(a, b, c) {
-    x1 = (-b+(Math.sqrt(b*b-4*a*c)))/(2*a)
-    x2 = (-b-(Math.sqrt(b*b-4*a*c)))/(2*a)
     equation = a+"x^2+"+b+"x+"+c
     console.log(equation)
+    // quadratic formula
+    x1 = (-b+(Math.sqrt(square(b)-4*a*c)))/(2*a)
+    x2 = (-b-(Math.sqrt(square(b)-4*a*c)))/(2*a)
+    // factorisation
     findFactors(a)
     afactors = (findFactors(a))
     findFactors(b)
@@ -76,7 +78,14 @@ function quadEquat(a, b, c) {
             }
         }
     }
+    // completing the square
+    if (a == 1) {
+       console.log("(x+"+(b/2)+")^2+"+(-(square(b/2))+c)) 
+    }
+    else {
+        let bda = b/a
+        console.log(a+"(x+"+(bda/2)+")^2+"+(-a*(square(bda/2))+c))
+    }
     console.log("x = "+x1+" or "+x2)
 }
-
 quadEquat(5, 25, -30)
